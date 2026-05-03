@@ -1,4 +1,4 @@
-# Odd-mp3-converter
+# Generic-mp3-converter
 Mp3 converter for odd music player
 
 ## Presentation
@@ -27,6 +27,8 @@ This script is in Batch so only compatible with Windows
 * You're done !
 
 ## How to use
+
+( Try it out first with a small sample file to see if it works with your device or for your needs )
 
 * Copy the input path who contain your files and folders
 * Launch `transferMusic.bat` and past it
