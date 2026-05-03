@@ -39,4 +39,4 @@ This script is in Batch so only compatible with Windows
 * Launch `transferMusic.bat` and past it
 * Copy the output path (create it if he doesn't exist)
 * Past it
-* Press `enter` and that it ! You will see the progression of conversion.
+* Press `enter` to get the summary of the conversion and `enter` again to launch the conversion process.
