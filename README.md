@@ -1,5 +1,5 @@
 # Generic-mp3-converter
-Mp3 converter for odd music player
+Mp3 converter for generic music player / old mp3 players
 
 ## Presentation
 
