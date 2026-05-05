@@ -42,8 +42,8 @@ if not exist "%ffprobe_directory%" (
   exit
 )
 
-set /p "input_directory=What is the input directory path ? (ex: C:\UserName\Music) "
-set /p "output_directory=What is the output directory path ? (ex: C:\UserName\Music\result)"
+set /p "input_directory=What is the input directory path ? (ex: C:\UserName\Music\) "
+set /p "output_directory=What is the output directory path ? (ex: C:\UserName\Music\result\)"
 echo.
 
 if not exist "%input_directory%" (
@@ -185,9 +185,8 @@ ECHO !Line!
 exit /b
 
 :WaitS
-rem ping to localhost is almost instant, so the delay is between itch try. ex: ping 2 = 1 try, 1 sec delay, 1 try = 1 sec
 set /a time=%1+1
-ping localhost -n %time% > nul
+timeout /t %time% > nul
 exit /b
 
 :endprog
