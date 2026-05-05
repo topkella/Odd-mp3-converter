@@ -3,8 +3,8 @@
 :: Use of transferMusic.bat is recommended instead of this script if you're not sure what you do
 :: 
 :: The syntax is : convert.bat "tmp_path" "free_instance_number" "file_path_with_ext" "file_name" "export_path_with_ext" "ffmpeg_path" "ffprobe_path"
-:: If you wan't to use it alone, create a folder named 1 somewhere (ex: C:\Users\User\Downloads\1) and start the command with :
-:: convert.bat "C:\Users\User\Downloads\" 1 ... and the others arguments
+:: If you want to use it alone, create a folder named 1 somewhere (ex: C:\Users\User\Downloads\1) and start the command with :
+:: convert.bat "C:\Users\User\Downloads\" "1" ... and the others arguments
 :: =============================================
 
 @echo off
@@ -20,10 +20,13 @@ IF %7=="" GOTO ERR
 set ffprobe_directory=%~7
 set ffmpeg_directory=%~6
 
-if exist "%~3" (
+if not exist "%~3" (
+del "%~1%2\occuped.txt"
+exit 1
+)
 :: Some player don't support cover larger than 500x500 or with different height and width, and the cover must be encoded with yuvj420p
 "%ffmpeg_directory%" -v quiet -i "%~3" -start_number 01 -vf "scale=-1:500,crop='if(gt(500,iw),iw,500)':'if(gt(500,ih),ih,500)'" -an -pix_fmt yuvj420p "%~1%2\%%02d.jpg"
-)
+
 :: They also don't support stream_tags so we have to extract them and write them in others mettadata
 "%ffprobe_directory%" -v quiet -show_entries stream_tags:format_tags:format=bit_rate -print_format ini "%~3" > "%~1%2\01.txt"
 
