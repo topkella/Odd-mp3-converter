@@ -2,20 +2,20 @@
 :: convert.bat - script to convert one file
 :: Use of transferMusic.bat is recommended instead of this script if you're not sure what you do
 :: 
-:: The syntax is : convert.bat tmp_path free_instance_number file_path file_name export_path ffmpeg_path ffprobe_path
+:: The syntax is : convert.bat "tmp_path" "free_instance_number" "file_path_with_ext" "file_name" "export_path_with_ext" "ffmpeg_path" "ffprobe_path"
 :: If you wan't to use it alone, create a folder named 1 somewhere (ex: C:\Users\User\Downloads\1) and start the command with :
 :: convert.bat "C:\Users\User\Downloads\" 1 ... and the others arguments
 :: =============================================
 
 @echo off
 
-IF "%1"=="" GOTO ERR
-IF "%2"=="" GOTO ERR
-IF "%3"=="" GOTO ERR
-IF "%4"=="" GOTO ERR
-IF "%5"=="" GOTO ERR
-IF "%6"=="" GOTO ERR
-IF "%7"=="" GOTO ERR
+IF %1=="" GOTO ERR
+IF %2=="" GOTO ERR
+IF %3=="" GOTO ERR
+IF %4=="" GOTO ERR
+IF %5=="" GOTO ERR
+IF %6=="" GOTO ERR
+IF %7=="" GOTO ERR
 
 set ffprobe_directory=%~7
 set ffmpeg_directory=%~6
