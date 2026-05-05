@@ -11,7 +11,7 @@ since the output format is designed for maximum compatibility.
 List of features :
 * Conversion by lot
 * id3v2 tagging in file tag
-* yuvj420p cover convert conversion
+* yuvj420p cover conversion (if applicable)
 * metadata encoding incompatibility fixer
 * bit rate adaptation to have the best compression / quality ratio
 
