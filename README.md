@@ -8,18 +8,26 @@ This script converts a set of music files to the MP3 format used by certain port
 while preserving the folder structure and organization. It can also simply serve as a multithreaded MP3 converter,
 since the output format is designed for maximum compatibility.
 
-Example output result :
-
-<img width="1354" height="1499" alt="example_output" src="https://github.com/user-attachments/assets/0beda0e2-c69d-4fc1-8377-052e1ce7a7a1" />
-
+List of features :
+* Conversion by lot
+* id3v2 tagging in file tag
+* yuvj420p cover convert conversion
+* metadata encoding incompatibility fixer
+* bit rate adaptation to have the best compression / quality ratio
 
 He use parallel conversions for a better conversion speed, particulaly with large set of files :
 
 <img width="1469" height="436" alt="instances speed" src="https://github.com/user-attachments/assets/0b46648e-70f8-4816-aa24-d3b21a4e997a" />
 
 (Number of instances is the number of parallel threads launched, you can change it in the line `set /a number_instance=6` )
-
+  
 This script is in Batch so only compatible with Windows
+
+## Preview
+
+Example output result :
+
+<img width="1354" height="1499" alt="example_output" src="https://github.com/user-attachments/assets/0beda0e2-c69d-4fc1-8377-052e1ce7a7a1" />
 
 ## How to install
 
