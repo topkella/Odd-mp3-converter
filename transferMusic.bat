@@ -1,9 +1,12 @@
-@echo off
-rem setlocal DisableDelayedExpansion enableextensions
+:: =============================================
+:: transferMusic.bat - mp3 converter by lot for generic mp3 player  
+:: =============================================
 
-rem replace with yours ffmpeg / ffprobe paths (use "where ffmpeg.exe" command)
-set ffprobe_directory=C:\ffprobe.exe
-set ffmpeg_directory=C:\ffmpeg.exe
+@echo off
+:: replace with yours ffmpeg / ffprobe paths (use "where ffmpeg.exe" command if ffmpeg is already installed)
+set ffprobe_directory=ffprobe.exe
+set ffmpeg_directory=ffmpeg.exe
+set /a number_instance=6
 
 set "music_extension=\.opus$ \.m4a$ \.wav$ \.aac$ \.flac$"
 
@@ -14,9 +17,8 @@ echo while preserving the folder structure and organization.
 echo ----------------------------------------------------------------------------------------
 echo.
 
-set "tmp_path=%~dp0"
+set "tmp_path=%TEMP%"
 set /a total_conv_count=0
-set /a number_instance=6
 
 if not exist "%ffmpeg_directory%" (
   echo ffmpeg.exe not found
@@ -45,9 +47,7 @@ if not exist "%input_directory%" (
 )
 
 if not exist "%output_directory%" (
-  echo Output directory not found
-  pause
-  exit
+  mkdir "%output_directory%"
 )
 
 if exist "%tmp_path%toconvert.txt" (
@@ -67,8 +67,8 @@ for /f "tokens=*" %%f in ('dir /B /S /A:-D /O:NE "%input_directory%" ^| findstr 
   
   SetLocal EnableDelayedExpansion
   set "directory=!directory:%input_directory%=!"
-  set "export_path=!output_directory!!directory!"
-  rem echo !export_path!!file_name!
+  set "export_path=!output_directory!\!directory!"
+
   if not exist "!export_path!!file_name!.mp3" (
 	echo !file! >> "%tmp_path%toconvert.txt"
 	set /p "=♫" <nul
@@ -122,7 +122,10 @@ for /f "tokens=*" %%f in ('type "%tmp_path%toconvert.txt"') do (
 
 
   copy NUL "!tmp_path!!free_instance!\occuped.txt" > nul
-  start /min convert.bat "!tmp_path!" !free_instance! "!file!" "!file_name!" "!export_path!" "%ffmpeg_directory%" "%ffprobe_directory%"
+  start /min convert.bat "!tmp_path!" !free_instance! "!file!" "!file_name!" "!export_path!" "%ffmpeg_directory%" "%ffprobe_directory%"|| (
+    call :printSpace "!file_name!" "FAILED" "!counter! ( !percent! %%%% )"
+    goto next_file
+  )
   call :printSpace "!file_name!" "CONVERTING..." "!counter! ( !percent! %%%% )"
   title !directory! processing...
   
@@ -135,7 +138,7 @@ call :WaitS 1
 echo Remaining files conversions :
 
 :remove_dirs
-rem if all conversions are finished, we clear temporary files and exit
+:: if all conversions are finished, we clear temporary files and exit
 tasklist | find /i /c "ffmpeg.exe" && call :WaitS 4 && goto remove_dirs
 call :WaitS 2
 echo Removing temporary files and folders...
@@ -156,7 +159,7 @@ for /L %%n in (1,1,%3) do (
 	  exit /b
 	)
 )
-rem echo Wait free instance...
+
 set /p "=." <nul
 call :WaitS 2
 set /p "=." <nul
