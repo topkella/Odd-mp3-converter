@@ -4,7 +4,7 @@
 :: 
 :: The syntax is : convert.bat tmp_path free_instance_number file_path file_name export_path ffmpeg_path ffprobe_path
 :: If you wan't to use it alone, create a folder named 1 somewhere (ex: C:\Users\User\Downloads\1) and start the command with :
-:: convert.bat "C:\Users\User\Downloads" 1 ... and the others arguments
+:: convert.bat "C:\Users\User\Downloads\" 1 ... and the others arguments
 :: =============================================
 
 @echo off
