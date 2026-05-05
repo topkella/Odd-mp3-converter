@@ -3,7 +3,7 @@ Mp3 converter for generic music player / old mp3 players
 
 ## Presentation
 
-This script converts a set of music files to the MP3 format used by certain portable music players
+This script converts a set of music files (wav, flac, m4a, aac, opus) to the MP3 format used by certain portable music players
 (which do not support stream tags or non-standard thumbnail encodings)
 while preserving the folder structure and organization. It can also simply serve as a multithreaded MP3 converter,
 since the output format is designed for maximum compatibility.
