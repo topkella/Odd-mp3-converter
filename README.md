@@ -45,6 +45,6 @@ Example output result :
 
 * Copy the input path who contain your files and folders
 * Launch `transferMusic.bat` and past it
-* Copy the output path (create it if he doesn't exist)
+* Copy the output path (will be created if he doesn't exist)
 * Past it
 * Press `enter` to get the summary of the conversion and `enter` again to launch the conversion process.
