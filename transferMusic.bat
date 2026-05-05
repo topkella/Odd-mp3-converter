@@ -20,6 +20,12 @@ echo.
 set "tmp_path=%TEMP%"
 set /a total_conv_count=0
 
+if not exist "%~dp0\convert.bat" (
+ echo convert.bat is missing, can't continue
+ pause
+ exit
+)
+
 if not exist "%ffmpeg_directory%" (
   echo ffmpeg.exe not found
   echo please download it and edit this script at the line "set ffmpeg_directory=..." and change with your ffmpeg path
